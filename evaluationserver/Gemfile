@@ -98,3 +98,5 @@ end
 
 gem 'bundler-audit'
 gem 'bootsnap', require: false
+
+gem 'webpacker'

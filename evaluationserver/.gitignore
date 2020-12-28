@@ -33,3 +33,9 @@ config/initializers/01_env.rb
 /config/master.key
 /mysql-data
 .docker_bash_history
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
