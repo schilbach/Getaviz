@@ -13,11 +13,16 @@ The evaluation server is a rails application capable to support the evaluation o
 
 ## Setup ##
 
-* install docker-compose
-* docker-compose build
-* docker-compose up
-* the server is reachable under http://localhost:3000
-* Admin-access without master.key-File is admin/admin 
+
+* install podman
+* podman build . -f Dockerfile.development -t evalserver-dev:0.0.1
+* podman pod create --name eval-server-development -p 54321:3000
+* mkdir -p ./db-data
+* touch .docker_bash_history
+* podman run -d --restart=always --pod=eval-server-development --volume=./db-data:/var/lib/mysql/data:Z -e MYSQL_ROOT_PASSWORD="rootpass" -e MYSQL_DATABASE="eval_server_development" -e MYSQL_USER="jasch" -e MYSQL_PASSWORD="none" --name=evalserver-db  mariadb
+* podman run -d -it --name=evalserver-rails --pod=eval-server-development --volume=.:/app:Z --volume=.docker_bash_history:/root/.bash_history:Z evalserver-dev:0.0.1
+* podman exec -it evalserver-rails  /bin/bash
+
 
 
 

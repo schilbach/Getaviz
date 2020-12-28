@@ -6,11 +6,12 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: "<%=ENV['DEVELOPMENT_MYSQL_DB_NAME']%>"
+  database: eval_server_development
   pool: 5
-  username: "<%=ENV['DEVELOPMENT_MYSQL_DB_USERNAME']%>"
-  password: "<%=ENV['DEVELOPMENT_MYSQL_DB_PASSWORD']%>"
-  host: "<%=ENV['DEVELOPMENT_MYSQL_DB_HOST']%>"
+  username: jasch
+  password: none
+  port: 3306
+  host: 127.0.0.1
 
 
 # Warning: The database defined as "test" will be erased and
