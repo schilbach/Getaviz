@@ -76,4 +76,8 @@ COPY Gemfile.lock /app
 
 RUN bundle install
 
+COPY package.json /app
+
+RUN yarn install
+
 CMD /bin/bash

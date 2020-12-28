@@ -99,4 +99,4 @@ end
 gem 'bundler-audit'
 gem 'bootsnap', require: false
 
-gem 'webpacker'
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
