@@ -19,9 +19,10 @@ The evaluation server is a rails application capable to support the evaluation o
 * podman pod create --name eval-server-development -p 54321:3000
 * mkdir -p ./db-data
 * touch .docker_bash_history
-* podman run -d --restart=always --pod=eval-server-development --volume=./db-data:/var/lib/mysql/data:Z -e MYSQL_ROOT_PASSWORD="rootpass" -e MYSQL_DATABASE="eval_server_development" -e MYSQL_USER="jasch" -e MYSQL_PASSWORD="none" --name=evalserver-db  mariadb
+* podman run -d --restart=always --pod=eval-server-development --volume=./db-data:/var/lib/postgresql/main/:Z  -e POSTGRES_DB="eval_server_development" -e POSTGRES_USER="jasch" -e POSTGRES_PASSWORD="none" --name=evalserver-db  postgres:13.1
 * podman run -d -it --name=evalserver-rails --pod=eval-server-development --volume=.:/app:Z --volume=.docker_bash_history:/root/.bash_history:Z evalserver-dev:0.0.1
 * podman exec -it evalserver-rails  /bin/bash
+* podman exec evalserver-rails  /app/bin/webpack-dev-server
 
 
 

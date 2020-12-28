@@ -41,7 +41,8 @@ ARG YARN_VERSION=1.22.4-1
 RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrade && \
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
     libpq-dev \
-    libmariadb-dev \
+    postgresql-client-$PG_MAJOR \
+#    libmariadb-dev \
     nodejs \
     yarn=$YARN_VERSION \
     $(cat /tmp/Aptfile | xargs) && \
